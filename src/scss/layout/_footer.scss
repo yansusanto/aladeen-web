@@ -1,23 +1,31 @@
-.site-footer {
+.footer {
+	position: relative;
+
+	&::before {
+		content: "";
+		position: absolute;
+		bottom: -32px;
+		left: calc(50% - 720px);
+		height: 263px;
+		width: 1440px;
+		background-image: url("../images/cta-illustration-light.svg");
+
+		.lights-off & {
+			background-image: url("../images/cta-illustration-dark.svg");
+		}
+	}
+
 	@include font-size(8, mobile, true, true, true);
 	@if (get-font-size(8, desktop) != get-font-size(8, mobile)) {
 		@include media(">medium") {
 			@include font-size(8, desktop, true, true, true);
 		}
 	}
-	background: color(tertiary, 1);
+
 	color: color(typography, 2);
 
 	a {
 		@include anchor-aspect(footer);
-	}
-
-	&::before {
-		display: none;
-
-		.lights-off & {
-			display: block;
-		}
 	}
 }
 
